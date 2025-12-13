@@ -1,5 +1,5 @@
 export { hitVisualCrossing, hitGif };
-import { resetWeatherInformation, resetGif } from "./src/helpers.js";
+import { resetWeatherInformation, resetGif } from "./helpers.js";
 
 async function hitVisualCrossing(location) {
     try {
