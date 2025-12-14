@@ -96,6 +96,7 @@ body {
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  min-height: 100vh;
 }
 
 /* left pane styles */
@@ -139,25 +140,29 @@ body {
 }
 
 hr {
-  margin-bottom: var(--fs-3);
+  margin-bottom: var(--fs-2);
+  height: 1px;
 }
 
 .condition,
 .date-time {
-  place-self: center start;
+  place-self: start;
   font-size: var(--fs-1);
+  font-weight: bold;
+  text-transform: uppercase;
+  /* font-size: var(--fs-2); */
 }
 
 .date-time {
-  margin-bottom: var(--fs-3);
-  margin-top: var(--fs-1);
+  /* margin-top: var(--fs-1); */
+  margin-bottom: var(--fs-1);
 }
 
 .gif {
   border-radius: 30px;
   border: 1px solid rgb(158, 158, 158);
   width: 100%;
-  height: 200px;
+  height: 150px;
 
   background-size: cover;
   background-position: center;
@@ -167,4 +172,56 @@ hr {
 /* right pane styles */
 .right-pane {
   background-color: var(--clr-7);
+  padding: var(--fs-3);
+  height: 100%;
+}
+
+.fahrenheit-celsius {
+  display: flex;
+  gap: var(--fs-1);
+}
+
+.fahrenheit,
+.celsius {
+  font-size: x-large;
+  color: #7c7c7c;
+  cursor: pointer;
+}
+
+.selected {
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.card-container {
+  display: grid;
+  gap: var(--fs-3);
+  grid-template-columns: repeat(2, minmax(min(200px, 100%), 1fr));
+  margin-top: var(--fs-4);
+}
+
+.card {
+  border-radius: var(--fs-1);
+  border: 1px solid white;
+  padding: var(--fs-2);
+  background-color: white;
+  overflow-wrap: anywhere;
+  box-shadow: 0px 0px 5px #a8a8a8;
+}
+
+.card:hover {
+  background: linear-gradient(var(--clr-4), var(--clr-6));
+  border: 1px solid #a8a8a8;
+}
+
+.card-title {
+  color: #7c7c7c;
+}
+
+.card-title.fly {
+  color: black;
+}
+
+.card-number {
+  font-size: var(--fs-4);
 }
