@@ -6,48 +6,52 @@
     <title>Foretell</title>
   </head>
   <body>
-    <div class="left-pane">
-      <input type="search" name="search" id="search" class="search" />
-      <div class="city"></div>
-      <div class="temperature">20</div>
-      <div class="condition"></div>
-      <div class="date-time"></div>
-      <img src="https://placehold.co/200x200" class="gif" />
-    </div>
-    <div class="right-pane">
-      <div class="fahrenheit-celsius">
-        <div class="fahrenheit">Fahrenheit</div>
-        <div class="celsius">Celsius</div>
+    <div class="wrapper">
+      <div class="left-pane">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          class="search"
+          placeholder="Search for a city..."
+        />
+        <div class="city">New York</div>
+        <div class="temperature">20</div>
+        <hr />
+        <div class="condition">cloudy</div>
+        <div class="date-time">Monday, August 15, 2025</div>
+        <div class="gif"></div>
       </div>
-      <div class="card-container">
-        <div class="humidity-container card">
-          <div class="humidity-title card-title">Humidity</div>
-          <div class="humidity-number card-number"></div>
+      <div class="right-pane">
+        <div class="fahrenheit-celsius">
+          <div class="fahrenheit">Fahrenheit</div>
+          <div class="celsius">Celsius</div>
         </div>
-
-        <div class="feels-like-container card">
-          <div class="feels-like-title card-title">Feels Like</div>
-          <div class="feels-like-number card-number"></div>
-        </div>
-
-        <div class="visibility-container card">
-          <div class="visibility-title card-title">Visibility</div>
-          <div class="visibility-number card-number"></div>
-        </div>
-
-        <div class="wind-speed-container card">
-          <div class="wind-speed-title card-tile">Wind Speed</div>
-          <div class="wind-speed-number card-number"></div>
-        </div>
-
-        <div class="sunrise-container card">
-          <div class="sunrise-title card-title">Sunrise</div>
-          <div class="sunrise-number card-number"></div>
-        </div>
-
-        <div class="sunset-container card">
-          <div class="sunset-title card-title">Sunset</div>
-          <div class="sunset-number card-number"></div>
+        <div class="card-container">
+          <div class="humidity-container card">
+            <div class="humidity-title card-title">Humidity</div>
+            <div class="humidity-number card-number"></div>
+          </div>
+          <div class="feels-like-container card">
+            <div class="feels-like-title card-title">Feels Like</div>
+            <div class="feels-like-number card-number"></div>
+          </div>
+          <div class="visibility-container card">
+            <div class="visibility-title card-title">Visibility</div>
+            <div class="visibility-number card-number"></div>
+          </div>
+          <div class="wind-speed-container card">
+            <div class="wind-speed-title card-tile">Wind Speed</div>
+            <div class="wind-speed-number card-number"></div>
+          </div>
+          <div class="sunrise-container card">
+            <div class="sunrise-title card-title">Sunrise</div>
+            <div class="sunrise-number card-number"></div>
+          </div>
+          <div class="sunset-container card">
+            <div class="sunset-title card-title">Sunset</div>
+            <div class="sunset-number card-number"></div>
+          </div>
         </div>
       </div>
     </div>
