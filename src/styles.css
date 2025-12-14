@@ -1,7 +1,170 @@
 /* variables */
+:root {
+  --fs-1: 1rem;
+  --fs-2: 1.618rem;
+  --fs-3: 2.618rem;
+  --fs-4: 4.236rem;
+  --fs-5: 6.854rem;
+  --fs-small: 0.618rem;
+
+  --clr-1: #1a1d26;
+  --clr-2: #5896fd;
+  --clr-3: #806ef8;
+  --clr-4: #aecdff;
+  --clr-5: #aecdff;
+  --clr-6: #aecdff;
+  --clr-6: #d8e7ff;
+  --clr-7: rgb(247, 247, 247);
+}
 
 /* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
 
 /* fonts */
+body {
+  font-family:
+    ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa, Manjari,
+    "Arial Rounded MT", "Arial Rounded MT Bold", Calibri, source-sans-pro,
+    sans-serif;
+  font-weight: 300;
+}
 
-/* common styles */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+/* left pane styles */
+.left-pane {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding-top: var(--fs-2);
+}
+
+.left-pane > * {
+  grid-column: 2/-2;
+}
+
+.search {
+  border-radius: 20px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 2px var(--clr-1);
+  line-height: var(--fs-2);
+  padding-left: var(--fs-1);
+}
+
+.search:hover {
+  box-shadow: 0px 0px 5px var(--clr-1);
+}
+
+.search:focus {
+  outline: 2px solid var(--clr-2);
+}
+
+.city {
+  font-size: var(--fs-3);
+  place-self: end center;
+  margin-top: var(--fs-4);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.temperature {
+  font-size: calc(var(--fs-5) * 2);
+  place-self: start center;
+}
+
+hr {
+  margin-bottom: var(--fs-3);
+}
+
+.condition,
+.date-time {
+  place-self: center start;
+  font-size: var(--fs-1);
+}
+
+.date-time {
+  margin-bottom: var(--fs-3);
+  margin-top: var(--fs-1);
+}
+
+.gif {
+  border-radius: 30px;
+  border: 1px solid rgb(158, 158, 158);
+  width: 100%;
+  height: 200px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* right pane styles */
+.right-pane {
+  background-color: var(--clr-7);
+}
