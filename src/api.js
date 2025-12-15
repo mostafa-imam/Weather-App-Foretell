@@ -1,36 +1,57 @@
-export { hitVisualCrossing, hitGif };
-import { resetWeatherInformation, resetGif } from "./helpers.js";
+export { hitGif, hitVisualCrossingCelsius, hitVisualCrossingFahrenheit };
+import { resetWeatherInformation, resetGif, displayError, gif } from "./dom.js";
 
-async function hitVisualCrossing(location) {
-    try {
-        const response = await fetch(
-            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=YYD6UJSJRZY2ADQDCNSEUS8RZ`,
-        );
-        if (response.ok) {
-            return await response.json();
-        } else if (response.status > 299) {
-            throw new Error("there is some error");
-        }
-    } catch (error) {
-        console.log(error);
-        resetWeatherInformation();
+async function hitGif(condition) {
+  try {
+    const response = await fetch(
+      `https://api.giphy.com/v1/gifs/translate?api_key=7MJdmJcY5DpPaX0rho4zdXGMfYlL2qdC&s=${condition}&weirdness=10`,
+    );
+
+    if (!response.ok) {
+      throw new Error(`Fetch Error: ${response.status}`);
+    } else {
+      const data = await response.json();
+      gif.style.backgroundImage = `url(${data.data.images.original.url})`;
     }
+  } catch (error) {
+    console.log(error.message);
+    resetGif();
+  }
 }
 
-async function hitGif(condition, img) {
-    try {
-        const response = await fetch(
-            `https://api.giphy.com/v1/gifs/translate?api_key=M1Vf9bS9gSWi3Cq2yezsEVOarlkrWnyd&s=${condition}&weirdness=0`,
-        );
-        if (response.ok) {
-            const gif = await response.json();
-
-            img.style.backgroundImage = `url(${gif.data.images.original.url})`;
-        } else if (response.status > 299) {
-            throw new Error("there is some error");
-        }
-    } catch (error) {
-        console.log(error);
-        resetGif(img);
+async function hitVisualCrossingFahrenheit(location) {
+  try {
+    const response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=YYD6UJSJRZY2ADQDCNSEUS8RZ&contentType=json`,
+    );
+    if (!response.ok) {
+      throw new Error(`Fetch Error: ${response.status}`);
+    } else {
+      return await response.json();
     }
+  } catch (error) {
+    console.log(error.message);
+    resetWeatherInformation();
+    displayError();
+    resetGif();
+  }
+}
+
+async function hitVisualCrossingCelsius(location) {
+  try {
+    const response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=YYD6UJSJRZY2ADQDCNSEUS8RZ&contentType=json`,
+    );
+
+    if (!response.ok) {
+      throw new Error(`Fetch Error: ${response.status}`);
+    } else {
+      return await response.json();
+    }
+  } catch (error) {
+    console.log(error.message);
+    resetWeatherInformation();
+    displayError();
+    resetGif();
+  }
 }

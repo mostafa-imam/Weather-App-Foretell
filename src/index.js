@@ -1,18 +1,78 @@
-import { hitVisualCrossing, hitGif } from "./api.js";
+import {
+    hitGif,
+    hitVisualCrossingFahrenheit,
+    hitVisualCrossingCelsius,
+} from "./api.js";
 import "./styles.css";
-import { gif } from "./dom.js";
-import { updateWeatherInformation, search, clearSearch } from "./dom.js"
+import {
+    updateWeatherInformation,
+    search,
+    clearSearch,
+    celsius,
+    fahrenheit,
+    selectCelsius,
+    removeError,
+} from "./dom.js";
 
-// const weather = hitVisualCrossing(search.value);
+let searchValue;
+
+document.addEventListener("DOMContentLoaded", () => {
+    selectCelsius();
+
+    searchValue = "new york city";
+
+    hitVisualCrossingCelsius(searchValue).then((data) => {
+        updateInfo(data);
+    });
+});
 
 search.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-        hitVisualCrossing(search.value).then((data) => {
+        searchValue = search.value;
 
-            hitGif(data.currentConditions.conditions + " weather", gif);
-            updateWeatherInformation(data);
-            clearSearch();
-
+        hitVisualCrossingCelsius(search.value).then((data) => {
+            updateInfo(data);
+            selectCelsius();
         });
     }
-})
+
+    removeError();
+});
+
+celsius.addEventListener("click", () => {
+    if (!celsius.classList.contains("selected")) {
+        celsius.classList.add("selected");
+        fahrenheit.classList.remove("selected");
+    }
+
+    if (searchValue !== undefined) {
+        hitVisualCrossingCelsius(searchValue).then((data) => {
+            updateInfo(data);
+            selectCelsius();
+        });
+    }
+
+    removeError();
+});
+
+fahrenheit.addEventListener("click", () => {
+    if (!fahrenheit.classList.contains("selected")) {
+        fahrenheit.classList.add("selected");
+        celsius.classList.remove("selected");
+    }
+
+    if (searchValue !== undefined) {
+        hitVisualCrossingFahrenheit(searchValue).then((data) => {
+            updateInfo(data);
+        });
+    }
+
+    removeError();
+});
+
+function updateInfo(data) {
+    hitGif(data.currentConditions.conditions + " weather forecast");
+    updateWeatherInformation(data);
+    clearSearch();
+    removeError();
+}
