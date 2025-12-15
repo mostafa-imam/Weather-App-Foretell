@@ -1,4 +1,4 @@
-export { resetGif, resetWeatherInformation, gif, updateWeatherInformation };
+export { resetGif, resetWeatherInformation, gif, updateWeatherInformation, search, clearSearch };
 import { format } from "date-fns";
 
 const city = document.querySelector(".city");
@@ -13,6 +13,7 @@ const visibility = document.querySelector(".visibility-number")
 const windSpeed = document.querySelector('.wind-speed-number');
 const sunrise = document.querySelector('.sunrise-number');
 const sunset = document.querySelector('.sunset-number');
+const search = document.querySelector(".search");
 
 function resetWeatherInformation() {
     city.textContent = "-";
@@ -40,4 +41,8 @@ function updateWeatherInformation(data) {
     windSpeed.textContent = data.currentConditions.windspeed;
     sunrise.textContent = data.currentConditions.sunrise;
     sunset.textContent = data.currentConditions.sunset;
+}
+
+function clearSearch() {
+    search.value = '';
 }
