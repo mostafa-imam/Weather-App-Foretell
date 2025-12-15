@@ -12,7 +12,6 @@
   --clr-3: #806ef8;
   --clr-4: #aecdff;
   --clr-5: #aecdff;
-  --clr-6: #aecdff;
   --clr-6: #d8e7ff;
   --clr-7: rgb(247, 247, 247);
 }
@@ -106,7 +105,7 @@ body {
   padding-top: var(--fs-2);
 }
 
-.left-pane > * {
+.left-pane>* {
   grid-column: 2/-2;
 }
 
@@ -216,10 +215,6 @@ hr {
 
 .card-title {
   color: #7c7c7c;
-}
-
-.card-title.fly {
-  color: black;
 }
 
 .card-number {
